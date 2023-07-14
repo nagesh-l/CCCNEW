@@ -22,7 +22,7 @@ WORKDIR /opt/CustomerCare
 # Update permissions for the /tmp directory
 RUN chmod -R 777 /tmp
 
-EXPOSE 80
+EXPOSE 5000
 
-# Start the application with HTTP instead of HTTPS
-CMD ["dotnet", "CustomerCareCore.MVC.dll", "--urls", "http://0.0.0.0:80"]
+# Start the application
+CMD ["dotnet", "/opt/CustomerCare/CustomerCareCore.MVC.dll"]
