@@ -14,10 +14,10 @@ RUN rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-p
     mkdir -p /opt/
 
 # Copy your application release with conf files to the container
-COPY CustomerCare /opt/CustomerCare/CustomerCare
+COPY CustomerCare /opt/CustomerCare
 
 # Set the working directory
-WORKDIR /opt/CustomerCare/CustomerCare
+WORKDIR /opt/CustomerCare
 
 # Update permissions for the /tmp directory
 RUN chmod -R 777 /tmp
@@ -25,4 +25,4 @@ RUN chmod -R 777 /tmp
 EXPOSE 5000
 
 # Start the application
-CMD ["dotnet", "/opt/CustomerCare/CustomerCare/CustomerCareCore.MVC.dll"]
+CMD ["dotnet", "/opt/CustomerCare/CustomerCareCore.MVC.dll"]
