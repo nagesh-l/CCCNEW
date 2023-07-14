@@ -1,5 +1,3 @@
-
-
 FROM centos:7
 
 ARG dotnet_cli_home_arg=/tmp/
@@ -24,7 +22,11 @@ WORKDIR /opt/CustomerCare
 # Update permissions for the /tmp directory
 RUN chmod -R 777 /tmp
 
+# Generate and trust the developer certificate
+RUN dotnet dev-certs https && \
+    dotnet dev-certs https --trust
+
 EXPOSE 5000
 
 # Start the application
-CMD ["dotnet", "/opt/CustomerCare/CustomerCareCore.MVC.dll"]
+CMD ["dotnet", "CustomerCareCore.MVC.dll"]
