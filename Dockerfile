@@ -22,11 +22,7 @@ WORKDIR /opt/CustomerCare
 # Update permissions for the /tmp directory
 RUN chmod -R 777 /tmp
 
-# Generate and trust the developer certificate
-RUN dotnet dev-certs https && \
-    dotnet dev-certs https --trust
+EXPOSE 80
 
-EXPOSE 5000
-
-# Start the application
-CMD ["dotnet", "CustomerCareCore.MVC.dll"]
+# Start the application with HTTP instead of HTTPS
+CMD ["dotnet", "CustomerCareCore.MVC.dll", "--urls", "http://0.0.0.0:80"]
