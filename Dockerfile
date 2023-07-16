@@ -13,6 +13,9 @@ RUN rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-p
     rm -rf /var/cache/yum && \
     mkdir -p /opt/
 
+# Clean any existing certificates
+RUN dotnet dev-certs https --clean
+
 # Generate and trust the developer certificate
 RUN dotnet dev-certs https && \
     dotnet dev-certs https --trust
