@@ -13,6 +13,9 @@ RUN rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-p
     rm -rf /var/cache/yum && \
     mkdir -p /opt/
 
+# Clean any existing developer certificate
+RUN dotnet dev-certs https --clean
+
 # Copy your application release with conf files to the container
 COPY CustomerCare /opt/CustomerCare
 
